@@ -1,5 +1,7 @@
 import random
 
+from numpy import rint
+
 # Home page and instructions
 print("\n===================================")
 print("Welcome to the Number Guessing Game")
@@ -13,8 +15,11 @@ print("\n===GOOD LUCK!===\n")
 # Generating a random number
 number = random.randint(1, 100)
 
-# Asking the user to give an input
-first_guess = int(input("Please select a number from 1-100: "))
+# Defining clue ranges
+clue_number = [20, 15, 10, 5]
+
+# Initial attempts
+attempts = 0
 
 # Function to mask the last digit
 def masked_last_digit(number):
@@ -24,9 +29,6 @@ def masked_last_digit(number):
 
 # Masked last digit of the number
 masked_number = masked_last_digit(number)
-
-# Defining clue ranges
-clue_number = [20, 15, 10, 5]
 
 # Calculating ranges for clues
 for i in range(len(clue_number)):
@@ -45,8 +47,15 @@ for i in range(len(clue_number)):
     elif i == 3:
         clue3 = f"{less} and {more}"
 
-# Initial attempts
-attempts = 0
+# Asking the user to give an input
+first_guess = int(input("Please select a number from 1-100: "))
+if first_guess == number:
+    print("Congrats your guess is correct")
+elif first_guess != number:
+    attempts += 3
+    print(f"Your first guess is incorrect\nYou have received {attempts} attempts")
+    print(f"The number is between {free_clue}")
+    number_guessed = int(input("Please enter your next guess: "))
 
 # Function to provide clues based on attempts
 def clue_output(attempts):
@@ -59,18 +68,11 @@ def clue_output(attempts):
     return f"NICE TRY! The actual number is '{number}'"
 
 # Checking the user's input
-if first_guess == number:
+if number_guessed == number:
     print("Congrats your guess is correct")
-elif first_guess != number:
-    attempts += 3
-    print(f"Your first guess is incorrect\nYou have received {attempts} attempts")
-    print(f"The number is between {free_clue}")
-    number_guessed = int(input("Please enter your next guess: "))
-    if number_guessed == number:
-        print("Congrats your guess is correct")
-    else:
-        while number_guessed != number and attempts != 0:
-            attempts -= 1
-            print(f"Attempts left: {attempts}")
-            print(clue_output(attempts))
-            number_guessed = int(input("Your guess is incorrect, try again: "))
+else:
+    while number_guessed != number and attempts != 0:
+        attempts -= 1
+        print(f"Attempts left: {attempts}")
+        print(clue_output(attempts))
+        number_guessed = int(input("Your guess is incorrect, try again: "))
