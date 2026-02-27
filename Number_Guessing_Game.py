@@ -6,23 +6,24 @@ print("Welcome to the Number Guessing Game")
 print("===================================\n")
 
 while True:
-    print("1. ")
-    print("2. ")
-    print("3. ")
-    print("4. ")
+    print("1. Start The Game")
+    print("2. Difficulty")
+    print("3. Scoreboard")
+    print("4. Exit The Game")
 
     command = input("> Your choice: ")
 
-    while command == "1":
-        
-            # Generating a random number
-            number = random.randint(1, 100)
+    for x in ["1", "2", "3", "4"]:
+        if command == "1":
+            print("Game starting...")
 
-            # Defining clue ranges
-            clue_number = [20, 15, 10, 5]
+            # Game logic goes here
+            
+            number = random.randint(1, 100) # Generating a random number
 
-            # Initial attempts
-            attempts = 0
+            clue_number = [20, 15, 10, 5] # Defining clue ranges
+
+            attempts = 0 # Initial attempts
 
             # Function to mask the last digit
             def masked_last_digit(number):
@@ -76,9 +77,39 @@ while True:
                 print(f"{clue_output(attempts)}")
                 number_guessed = int(input("\nYour guess is incorrect, try again: "))
                 attempts -= 1
+                if attempts == 0:
+                    print(clue_output(attempts))
+                    break
+                elif number_guessed == number:
+                    print("Congrats your guess is correct")
+                    break
 
-            if number_guessed == number:
-                print("Congrats your guess is correct")
-            else:
-                print(clue_output(attempts))
+        elif command == "2":
+            print("Difficulty settings...")
+            print("1. Easy")
+            print("2. Medium")
+            print("3. Hard")
+            difficulty = input("> Type '0' to back to main menu: ")
+
+            # Difficulty settings logic goes here
+
+        elif command == "3":
+            print("Scoreboard...")
+            print("1. All score")
+            print("2. Best score")
+            print("3. Total game played")
+            scoreboard = input("> Type '0' to back to main menu: ")
+
+            # Scoreboard logic goes here
+
+        elif command == "4":
+            print("Exiting the game...")
+            break
+        else:
+            while command not in ["1", "2", "3", "4"]:
+                command = input("Your choice is invalid, please try again: ")
+            continue  # Restart the main loop
+
+    if command == "4":
+        break  # Exit the main loop
                 
