@@ -6,10 +6,12 @@ print("Welcome to the Number Guessing Game")
 print("===================================\n")
 
 while True:
+    print("==================")
     print("1. Start The Game")
     print("2. Difficulty")
     print("3. Scoreboard")
     print("4. Exit The Game")
+    print("==================")
 
     command = input("> Your choice: ")
 
@@ -81,8 +83,16 @@ while True:
                     print(clue_output(attempts))
                     break
                 elif number_guessed == number:
-                    print("Congrats your guess is correct")
+                    print("Congrats your guess is correct.")
                     break
+                else:
+                    while number_guessed is str() or number_guessed < 1 or number_guessed > 100:
+                        number_guessed = int(input("Your guess is invalid, please try again: "))
+                    continue  # Restart the guessing loop with the valid guess
+            
+            if number_guessed == number:
+                print("\nSetting back to main menu...\n")
+                continue  # Restart the main loop after a correct guess
 
         elif command == "2":
             print("Difficulty settings...")

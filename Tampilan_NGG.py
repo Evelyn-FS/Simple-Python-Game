@@ -27,7 +27,6 @@ while True:
             print("1. All score")
             print("2. Best score")
             print("3. Total game played")
-
             scoreboard = input("> Type '0' to back to main menu: ")
             # Scoreboard logic goes here
         elif command == "4":
