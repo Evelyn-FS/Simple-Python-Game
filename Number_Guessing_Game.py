@@ -101,6 +101,10 @@ while True:
             print("3. Hard")
             difficulty = input("> Type '0' to back to main menu: ")
 
+            if difficulty == "1":
+                print("\n== Easy Mode Selected ==\n")
+                
+
             # Difficulty settings logic goes here
 
         elif command == "3":
