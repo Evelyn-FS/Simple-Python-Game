@@ -20,6 +20,7 @@ while True:
             print("1. Easy")
             print("2. Medium")
             print("3. Hard")
+            print("4. Current level")
             difficulty = input("> Type '0' to back to main menu: ")
             # Difficulty settings logic goes here
         elif command == "3":

@@ -17,7 +17,7 @@ while True:
 
     for x in ["1", "2", "3", "4"]:
         if command == "1":
-            print("Game starting...")
+            print("\nGame starting...\n")
 
             # Game logic goes here
             
@@ -54,7 +54,7 @@ while True:
                     clue3 = f"{less} and {more}"
 
             # Asking the user to give an input
-            first_guess = int(input("\nPlease select a number from 1-100: "))
+            first_guess = int(input("Please select a number from 1-100: "))
             if first_guess == number:
                 print("Congrats your guess is correct")
             elif first_guess != number:
@@ -103,7 +103,7 @@ while True:
 
             if difficulty == "1":
                 print("\n== Easy Mode Selected ==\n")
-                
+
 
             # Difficulty settings logic goes here
 
