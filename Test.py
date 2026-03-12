@@ -4,15 +4,29 @@ print("\n== Main Menu ==\n")
 
 mode = ""
 
-def current_difficulty(mode):
-    if mode == "Easy":
-        print("\n=> Your current difficulty level is >Easy<.\n")
-    elif mode == "Medium":
-        print("\n=> Your current difficulty level is >Medium<.\n")
-    elif mode == "Hard":
-        print("\n=> Your current difficulty level is >Hard<.\n")
-    else:
-        print("\n=> No difficulty level selected yet.\n")
+def difficulty_sub_menu(mode):
+    print(f"\n== {mode} Mode Selected ==\n")
+    while True:
+        print("======Settings======")
+        print("1. Info")
+        print("0. Back to main menu")
+        print("====================")
+        choice = input("> Your choice: ")
+        if choice == "1":
+            print(Difficulty_Info[mode])
+        elif choice == "0":
+            print("\nSetting back to Difficulty Settings...\n")
+            break
+        else:
+            print("Your choice is invalid, please try again.")
+    return mode
+
+Difficulty_Info = {
+    "Easy": "You will recieve 10 attempts to guess the number.\nThe clues will be more detailed and easier to understand.\nGood luck!",
+    "Medium": "You will recieve 7 attempts to guess the number.\nThe clues will be less detailed and more challenging to understand.\nGood luck!",
+    "Hard": "You will recieve 5 attempts to guess the number.\nThe clues will be very vague and difficult to understand.\nGood luck!"
+}
+    
 
 while True:
     print("== Difficulty Settings Menu ==")
